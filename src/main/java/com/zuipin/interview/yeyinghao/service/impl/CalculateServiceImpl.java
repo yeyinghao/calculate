@@ -110,10 +110,10 @@ public class CalculateServiceImpl implements CalculateService {
 			}
 
 			// 求左剩余
-			getLeftRemain(sdfTemp, leftStart, leftEnd, left, sblong, eblong);
+			getRemain(sdfTemp, leftStart, leftEnd, left, sblong, eblong);
 
 			// 求右剩余
-			getLeftRemain(sdfTemp, rightStart, rightEnd, right, sblong, eblong);
+			getRemain(sdfTemp, rightStart, rightEnd, right, sblong, eblong);
 		} else {
 			// 两个时间段无任何交集
 			calculateResult.setIntersection("");
@@ -125,10 +125,21 @@ public class CalculateServiceImpl implements CalculateService {
 		return calculateResult;
 	}
 
-	private void getLeftRemain(SimpleDateFormat sdfTemp, long start, long end, List<String> reamins, long sblong, long eblong) {
+	/**
+	 * 功能描述: 计算剩余区间
+	 * @author yeYingHao
+	 * @date 2020/11/15 下午10:42
+	 * @param sdfTemp 格式化时间
+	 * @param start 区间开始时间
+	 * @param end 区间结束时间
+	 * @param reamins 剩余区间集合
+	 * @param sblong 交集开始时间
+	 * @param eblong  交集结束时间
+	 */
+	private void getRemain(SimpleDateFormat sdfTemp, long start, long end, List<String> reamins, long sblong, long eblong) {
 		// 当时间段的最小大于等于交集的最小值 并且 时间段的最大小于等于交集的最大值 此时 时间段 剩下 无
-		if (start >= sblong && end <= eblong) {
-		}
+		// if (start >= sblong && end <= eblong) {
+		// }
 
 		// 当时间段的最小 小于交集的最小值 并且 时间段的最大 大于交集的最大值 此时 时间段 剩下
 		if (start < sblong && end > eblong) {
